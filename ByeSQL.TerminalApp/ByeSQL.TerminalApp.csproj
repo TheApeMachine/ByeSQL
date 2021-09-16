@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>ByeSQL.TerminalApp</AssemblyName>
+    <RootNamespace>ByeSQL.TerminalApp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IContextHandler.cs" />
+    <Compile Remove="SelectHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ConsoleDump" Version="0.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Workbench\Workbench.csproj" />
+  </ItemGroup>
+
+</Project>

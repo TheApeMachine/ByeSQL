@@ -1,0 +1,28 @@
+version: '3.7'
+
+volumes:
+  mysql-data:
+
+services:
+
+  mysql:
+    # image: mariadb:latest
+    build: ./builder
+    cap_add:
+      - SYS_NICE
+    command: --default-authentication-plugin=mysql_native_password --log-bin-trust-function-creators=1 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - MYSQL_ROOT_PASSWORD=[redacted]
+      - MYSQL_USER=[redacted]
+      - MYSQL_PASSWORD=[redacted]
+      - MYSQL_ROOT_HOST=%
+    tmpfs:
+     - /var/lib/mysql
+     - /tmp
+     - /var/log
+    volumes:
+      - ./conf:/etc/mysql/conf.d
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+      - "33060:33060"
